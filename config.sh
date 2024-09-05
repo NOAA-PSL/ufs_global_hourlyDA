@@ -95,13 +95,22 @@ elif [ "$machine" == 'orion' ]; then
    export obs_datapath=/work/noaa/rstprod/dump
    ulimit -s unlimited
    source $MODULESHOME/init/sh
-   module use /work/noaa/epic-ps/role-epic-ps/hpc-stack/libs/intel-2022.1.2/modulefiles/stack
-   module load hpc/1.2.0
-   module load hpc-intel/2022.1.2
-   module load hpc-impi/2022.1.2
-   module load hdf5/1.10.6
-   module load wgrib/1.8.0b
-   export PATH="/work/noaa/gsienkf/whitaker/miniconda3/bin:$PATH"
+   ulimit -s unlimited
+   module use /work/noaa/epic/role-epic/spack-stack/orion/spack-stack-1.6.0/envs/gsi-addon-env-rocky9/install/modulefiles/Core 
+   module load stack-intel/2021.9.0
+   module load crtm-fix/2.4.0.1_emc
+   module load stack-intel-oneapi-mpi/2021.9.0
+   module load intel-oneapi-mkl/2022.2.1
+   module load grib-util
+   module load parallelio
+   module load netcdf/4.9.2
+   module load netcdf-fortran/4.6.1
+   module load bufr/11.7.0 ## worked jan 5
+   module load crtm/2.4.0
+   module load gsi-ncdiag
+   module load python
+   module load py-netcdf4
+   module list
    export HDF5_DISABLE_VERSION_CHECK=1
    export WGRIB=`which wgrib`
 elif [ $machine == "hercules" ]; then
